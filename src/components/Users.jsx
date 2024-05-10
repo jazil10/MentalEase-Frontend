@@ -6,6 +6,7 @@ import Loading from "./Loading";
 import { setLoading } from "../redux/reducers/rootSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Empty from "./Empty";
+import { API_BASE_URL } from '../constants'; // Adjust the import path as necessary
 import fetchData from "../helper/apiCall";
 
 axios.defaults.baseURL = process.env.REACT_APP_SERVER_DOMAIN;
@@ -18,7 +19,7 @@ const Users = () => {
   const getAllUsers = async (e) => {
     try {
       dispatch(setLoading(true));
-      const temp = await fetchData(`http://localhost:5000/api/user/getallusers`);
+      const temp = await fetchData(`${API_BASE_URL}/api/user/getallusers`);
       setUsers(temp);
       console.log("🚀 ~ file: Users.jsx:23 ~ getAllUsers ~ temp:", temp);
       dispatch(setLoading(false));
@@ -30,7 +31,7 @@ const Users = () => {
       const confirm = window.confirm("Are you sure you want to delete?");
       if (confirm) {
         const { data } = await toast.promise(
-          axios.delete("http://localhost:5000/api/user/deleteuser", {
+          axios.delete(`${API_BASE_URL}/api/user/deleteuser`, {
             headers: {
               authorization: `Bearer ${localStorage.getItem("token")}`,
             },

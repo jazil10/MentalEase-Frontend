@@ -5,6 +5,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { setUserInfo } from "../redux/reducers/rootSlice";
+import { API_BASE_URL } from '../constants'; // Adjust the import path as necessary
 import jwt_decode from "jwt-decode";
 import fetchData from "../helper/apiCall";
 
@@ -37,7 +38,7 @@ function Login() {
       }
 
       const { data } = await toast.promise(
-        axios.post("http://localhost:5000/api/user/login", {
+        axios.post(`${API_BASE_URL}/api/user/login`, {
           email,
           password,
         }),

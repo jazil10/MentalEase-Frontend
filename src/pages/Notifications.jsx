@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import fetchData from "../helper/apiCall";
 import { setLoading } from "../redux/reducers/rootSlice";
+import { API_BASE_URL } from '../constants'; // Adjust the import path as necessary
 import Loading from "../components/Loading";
 
 const Notifications = () => {
@@ -16,7 +17,7 @@ const Notifications = () => {
   const getAllNotif = async (e) => {
     try {
       dispatch(setLoading(true));
-      const temp = await fetchData(`http://localhost:5000/api/notification/getallnotifs`);
+      const temp = await fetchData(`${API_BASE_URL}/api/notification/getallnotifs`);
       dispatch(setLoading(false));
       setNotifications(temp);
     } catch (error) {}

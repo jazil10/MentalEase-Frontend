@@ -4,6 +4,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import Loading from "./Loading";
 import { setLoading } from "../redux/reducers/rootSlice";
+import { API_BASE_URL } from '../constants'; // Adjust the import path as necessary
 import { useDispatch, useSelector } from "react-redux";
 import Empty from "./Empty";
 import fetchData from "../helper/apiCall";
@@ -18,7 +19,7 @@ const AdminAppointments = () => {
   const getAllAppoint = async (e) => {
     try {
       dispatch(setLoading(true));
-      const temp = await fetchData(`http://localhost:5000/api/appointment/getallappointments`);
+      const temp = await fetchData(`${API_BASE_URL}/api/appointment/getallappointments`);
       setAppointments(temp);
       dispatch(setLoading(false));
     } catch (error) {}

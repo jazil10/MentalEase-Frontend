@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../styles/bookappointment.css";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { API_BASE_URL } from '../constants'; // Adjust the import path as necessary
 import { IoMdClose } from "react-icons/io";
 
 const BookAppointment = ({ setModalOpen, ele }) => {
@@ -23,7 +24,7 @@ const BookAppointment = ({ setModalOpen, ele }) => {
     try {
       const { data } = await toast.promise(
         axios.post(
-          "http://localhost:5000/api/appointment/bookappointment",
+          `${API_BASE_URL}/api/appointment/bookappointment`,
           {
             doctorId: ele.userId._id,
             date: formDetails.date,

@@ -6,6 +6,7 @@ import "../styles/doctors.css";
 import fetchData from "../helper/apiCall";
 import Loading from "../components/Loading";
 import { useDispatch, useSelector } from "react-redux";
+import { API_BASE_URL } from '../constants'; // Adjust the import path as necessary
 import { setLoading } from "../redux/reducers/rootSlice";
 import Empty from "../components/Empty";
 
@@ -16,7 +17,7 @@ const Doctors = () => {
 
   const fetchAllDocs = async () => {
     dispatch(setLoading(true));
-    const data = await fetchData(`http://localhost:5000/api/doctor/getalldoctors`);
+    const data = await fetchData(`${API_BASE_URL}/api/doctor/getalldoctors`);
     setDoctors(data);
     dispatch(setLoading(false));
   };

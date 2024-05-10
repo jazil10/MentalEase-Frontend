@@ -3,6 +3,7 @@ import "../styles/contact.css";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from '../constants'; // Adjust the import path as necessary
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -29,7 +30,7 @@ const ApplyDoctor = () => {
     try {
       const { data } = await toast.promise(
         axios.post(
-          "http://localhost:5000/api/doctor/applyfordoctor",
+          `${API_BASE_URL}/api/doctor/applyfordoctor`,
           {
             formDetails,
           },

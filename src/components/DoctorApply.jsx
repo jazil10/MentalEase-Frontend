@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import "../styles/doctorapply.css";
+import { API_BASE_URL } from '../constants'; // Adjust the import path as necessary
 import axios from "axios";
 
 axios.defaults.baseURL = process.env.REACT_APP_SERVER_DOMAIN;
@@ -31,7 +32,7 @@ function DoctorApply() {
       }
       const { data } = await toast.promise(
         axios.post(
-          "http://localhost:5000/api/doctor/applyfordoctor",
+          `${API_BASE_URL}/api/doctor/applyfordoctor`,
 
           {
             specialization,

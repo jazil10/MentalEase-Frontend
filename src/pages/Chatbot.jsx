@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import "../styles/chatbot.css";
 import Footer from "../components/Footer";
+import { API_BASE_URL } from '../constants'; // Adjust the import path as necessary
 import Navbar from "../components/Navbar";
 
 const ChatbotPage = () => {
@@ -21,7 +22,7 @@ const ChatbotPage = () => {
       setMessages((prevMessages) => [...prevMessages, userMessage]);
       setUserInput('');
 
-      const apiUrl = 'http://localhost:5000/api/chat/chatbot';
+      const apiUrl = `${API_BASE_URL}/api/chat/chatbot`;
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {

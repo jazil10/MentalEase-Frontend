@@ -2,7 +2,6 @@
   "name": "client",
   "version": "0.1.0",
   "allowedHosts": "all",
- 
   "private": true,
   "dependencies": {
     "@mui/material": "^5.13.1",
@@ -40,6 +39,7 @@
     ]
   },
   
+  
   "browserslist": {
     "production": [
       ">0.2%",
@@ -52,4 +52,6 @@
       "last 1 safari version"
     ]
   }
+
+  
 }

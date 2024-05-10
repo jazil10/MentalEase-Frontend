@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import Loading from "./Loading";
 import { setLoading } from "../redux/reducers/rootSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { API_BASE_URL } from '../constants'; // Adjust the import path as necessary
 import Empty from "./Empty";
 import fetchData from "../helper/apiCall";
 
@@ -18,7 +19,7 @@ const AdminDoctors = () => {
   const getAllDoctors = async (e) => {
     try {
       dispatch(setLoading(true));
-      const temp = await fetchData(`http://localhost:5000/api/doctor/getalldoctors`);
+      const temp = await fetchData(`${API_BASE_URL}/api/doctor/getalldoctors`);
       setDoctors(temp);
       dispatch(setLoading(false));
     } catch (error) {}

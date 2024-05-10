@@ -7,6 +7,7 @@ import { setLoading } from "../redux/reducers/rootSlice";
 import Loading from "../components/Loading";
 import { useDispatch, useSelector } from "react-redux";
 import jwt_decode from "jwt-decode";
+import { API_BASE_URL } from '../constants'; // Adjust the import path as necessary
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -20,7 +21,7 @@ const Appointments = () => {
     try {
       dispatch(setLoading(true));
       const temp = await fetchData(
-        `http://localhost:5000/api/appointment/getallappointments?search=${userId}`
+        `${API_BASE_URL}/api/appointment/getallappointments?search=${userId}`
       );
       setAppointments(temp);
       dispatch(setLoading(false));
@@ -35,7 +36,7 @@ const Appointments = () => {
     try {
       const { data } = await toast.promise(
         axios.put(
-          "http://localhost:5000/api/appointment/completed",
+          `${API_BASE_URL}/api/appointment/completed`,
           {
             appointid: ele._id,
             doctorId: ele.doctorId._id,
